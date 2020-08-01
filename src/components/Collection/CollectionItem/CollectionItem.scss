@@ -1,9 +1,15 @@
 .collection-item {
-  width: 22%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   height: 350px;
   align-items: center;
+  @media screen and (min-width: 600px) {
+    width: 48%;
+  }
+  @media screen and (min-width: 1000px) {
+    width: 24%;
+  }
 
   .image {
     width: 100%;
