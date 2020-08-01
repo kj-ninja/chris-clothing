@@ -43,8 +43,8 @@ class Catalog extends Component {
     render() {
         return (
             <div className="catalog">
-                {this.state.sections.map(({id, title, imageUrl, size})=> (
-                    <CatalogItem key={id} title={title} image={imageUrl} size={size}/>
+                {this.state.sections.map(({id, ...otherSectionProps})=> (
+                    <CatalogItem key={id} {...otherSectionProps}/>
                 ))}
             </div>
         );

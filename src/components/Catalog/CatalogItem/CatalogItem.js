@@ -1,11 +1,12 @@
 import React from 'react';
+import {withRouter} from 'react-router-dom';
 import './CatalogItem.scss';
 
-const CatalogItem = ({title, image, size}) => {
+const CatalogItem = ({title, imageUrl, size, history, match, linkUrl}) => {
     return (
-        <div className={size ? "catalog-item large" : "catalog-item"}>
+        <div className={size ? "catalog-item large" : "catalog-item"} onClick={()=>history.push(`${match.url}${linkUrl}`)}>
             <div className="background-image" style={{
-                backgroundImage: `url(${image})`
+                backgroundImage: `url(${imageUrl})`
             }}>
             </div>
             <div className="container">
@@ -16,4 +17,4 @@ const CatalogItem = ({title, image, size}) => {
     );
 };
 
-export default CatalogItem;
+export default withRouter(CatalogItem);
