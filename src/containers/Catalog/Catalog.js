@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './Catalog.scss';
-import CatalogItem from "./CatalogItem/CatalogItem";
+import CatalogItem from "../../components/CatalogItem/CatalogItem";
 
 class Catalog extends Component {
     state = {
