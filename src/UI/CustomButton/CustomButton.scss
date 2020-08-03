@@ -1,10 +1,8 @@
 .custom-button {
-  min-width: 165px;
-  width: auto;
+  min-width: 100px;
   height: 50px;
   letter-spacing: 0.5px;
-  line-height: 50px;
-  padding: 0 35px 0 35px;
+  padding: 0 25px 0 25px;
   font-size: 15px;
   background-color: #000;
   color: #fff;
@@ -13,6 +11,16 @@
   font-weight: bolder;
   border: none;
   cursor: pointer;
+
+  @media screen and (min-width: 600px) {
+    min-width: 165px;
+    width: auto;
+    height: 50px;
+    letter-spacing: 0.5px;
+    line-height: 50px;
+    padding: 0 35px 0 35px;
+    font-size: 15px;
+  }
 
   &:hover {
     background-color: #fff;
