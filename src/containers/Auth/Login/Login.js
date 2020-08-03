@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './Login.scss';
+import {Link} from "react-router-dom";
 import {auth, signInWithGoogle} from "../../../firebase/firebase";
 import FormInput from "../FormInput/FormInput";
 import CustomButton from "../../../UI/CustomButton/CustomButton";
@@ -62,6 +63,7 @@ class Login extends Component {
                         </CustomButton>
                     </div>
                 </form>
+                <Link to="/register">New user? <span>Click here</span></Link>
             </section>
         );
     }
