@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import FormInput from "../FormInput/FormInput";
 import './Login.scss';
-import CustomButton from "../../../UI/CustomButton/CustomButton";
 import {signInWithGoogle} from "../../../firebase/firebase";
+import FormInput from "../FormInput/FormInput";
+import CustomButton from "../../../UI/CustomButton/CustomButton";
 
 class Login extends Component {
     state = {
@@ -45,12 +45,14 @@ class Login extends Component {
                         label="Password"
                     />
 
-                    <CustomButton type="submit">
-                        Sign in
-                    </CustomButton>
-                    <CustomButton onClick={signInWithGoogle}>
-                        Sign in with Google
-                    </CustomButton>
+                    <div className="buttons">
+                        <CustomButton type="submit">
+                            Sign in
+                        </CustomButton>
+                        <CustomButton onClick={signInWithGoogle} google>
+                            Sign in with Google
+                        </CustomButton>
+                    </div>
                 </form>
             </div>
         );
