@@ -1,0 +1,7 @@
+.register {
+  width: 80vw;
+  margin: 5vw auto;
+  @media screen and (min-width: 600px){
+    width: 450px;
+  }
+}

@@ -23,8 +23,8 @@ class Login extends Component {
 
     render() {
         return (
-            <div className="login">
-                <h1>I already have an account</h1>
+            <section className="login">
+                <h2>I already have an account</h2>
                 <span>Sign in with you email an password</span>
 
                 <form onSubmit={this.handleSubmit}>
@@ -54,7 +54,7 @@ class Login extends Component {
                         </CustomButton>
                     </div>
                 </form>
-            </div>
+            </section>
         );
     }
 }
