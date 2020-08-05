@@ -1,24 +1,13 @@
-import React, {Component} from 'react';
-import SHOP_DATA from './shopData';
-import CollectionList from "../../components/Collection/CollectionList/CollectionList";
+import React from 'react';
 import './Shop.scss';
+import CollectionsOverview from "../../components/Collection/CollectionsOverview/CollectionsOverview";
 
-class Shop extends Component {
-    state = {
-        collections: SHOP_DATA
-    };
-
-    render() {
-        const {collections} = this.state;
-
-        return (
-            <section className="shop">
-                {collections.map(({id, ...otherCollectionProps}) => (
-                    <CollectionList key={id} {...otherCollectionProps}/>
-                ))}
-            </section>
-        );
-    }
-}
+const Shop = () => {
+    return (
+        <section className="shop">
+            <CollectionsOverview/>
+        </section>
+    );
+};
 
 export default Shop;
