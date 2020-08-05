@@ -4,7 +4,7 @@ import CollectionItem from "../CollectionItem/CollectionItem";
 
 const CollectionList = ({title, items}) => {
     return (
-        <section className="collection-list">
+        <div className="collection-list">
             <h1 className="title">{title.toUpperCase()}</h1>
             <div className="preview">
                 {items
@@ -13,7 +13,7 @@ const CollectionList = ({title, items}) => {
                         <CollectionItem key={item.id} item={item}/>
                     ))}
             </div>
-        </section>
+        </div>
     );
 };
 
