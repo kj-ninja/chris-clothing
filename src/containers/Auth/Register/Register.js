@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {auth, createUserProfileDocument} from "../../../firebase/firebase";
 import './Register.scss';
 import FormInput from "../FormInput/FormInput";
-import CustomButton from "../../../UI/CustomButton/CustomButton";
+import CustomButton from "../../../components/UI/CustomButton/CustomButton";
 
 class Register extends Component {
     state = {

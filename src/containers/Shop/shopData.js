@@ -1,5 +1,5 @@
 const SHOP_DATA = {
-    hast: {
+    hats: {
         id: 1,
         title: 'Hats',
         routeName: 'hats',
@@ -198,6 +198,11 @@ const SHOP_DATA = {
                 name: 'White Blouse',
                 imageUrl: 'https://i.ibb.co/qBcrsJg/white-vest.png',
                 price: 20
+            }, {
+                id: 40,
+                name: 'Modern Dress',
+                imageUrl: 'https://www.e-konkursy.info/files/articles/org/2017/12/10/konkurs-z-fashion-girls.jpg',
+                price: 50
             }
         ]
     },
@@ -241,6 +246,18 @@ const SHOP_DATA = {
                 name: 'Burgundy T-shirt',
                 imageUrl: 'https://i.ibb.co/mh3VM1f/polka-dot-shirt.png',
                 price: 25
+            },
+            {
+                id: 36,
+                name: 'Jackie Chan Shirt',
+                imageUrl: 'https://image.made-in-china.com/202f0j00AjYENyIPfqzo/The-Wholesale-Mens-Dress-Shirts-Models-with-Mens-Casual-Shirts-Men-Wash-and-Wear.jpg',
+                price: 45
+            },
+            {
+                id: 37,
+                name: 'Bruce Lee Suit',
+                imageUrl: 'https://www.modellingagenciesmumbai.com/blog/wp-content/uploads/2019/06/fashion-model.jpg',
+                price: 35
             }
         ]
     }

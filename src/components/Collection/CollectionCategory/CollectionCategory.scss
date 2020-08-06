@@ -8,12 +8,20 @@
   }
 
   .items {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    @media screen and (min-width: 1000px) {
+    }
 
     & .collection-item {
       margin-bottom: 30px;
+      width: 48%;
+
+      @media screen and (min-width: 1000px) {
+        width: 23%;
+      }
     }
   }
 }

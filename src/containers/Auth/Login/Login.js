@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
-import './Login.scss';
-import {Link} from "react-router-dom";
 import {auth, signInWithGoogle} from "../../../firebase/firebase";
 import FormInput from "../FormInput/FormInput";
-import CustomButton from "../../../UI/CustomButton/CustomButton";
+import CustomButton from "../../../components/UI/CustomButton/CustomButton";
+import {LoginContainer, LoginTitle, ButtonsContainer, SignUpLink} from "./Login.styles";
 
 class Login extends Component {
     state = {
@@ -32,8 +31,8 @@ class Login extends Component {
 
     render() {
         return (
-            <section className="login">
-                <h2>I already have an account</h2>
+            <LoginContainer>
+                <LoginTitle>I already have an account</LoginTitle>
                 <span>Sign in with you email an password</span>
 
                 <form onSubmit={this.handleSubmit}>
@@ -54,17 +53,17 @@ class Login extends Component {
                         label="Password"
                     />
 
-                    <div className="buttons">
+                    <ButtonsContainer>
                         <CustomButton type="submit">
                             Sign in
                         </CustomButton>
                         <CustomButton onClick={signInWithGoogle} type="button" google>
                             Sign in with Google
                         </CustomButton>
-                    </div>
+                    </ButtonsContainer>
                 </form>
-                <Link to="/register">New user? <span>Click here</span></Link>
-            </section>
+                <SignUpLink to="/register">New user? <span>Click here</span></SignUpLink>
+            </LoginContainer>
         );
     }
 }

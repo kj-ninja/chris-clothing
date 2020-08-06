@@ -1,18 +1,47 @@
-import React from 'react';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {firestore} from "../../firebase/firebase";
 import {Route} from 'react-router-dom';
+import {updateCollections} from "../../store/actions/shop";
 import CollectionsOverview from "../../components/Collection/CollectionsOverview/CollectionsOverview";
 import './Shop.scss';
 import CollectionCategory from "../../components/Collection/CollectionCategory/CollectionCategory";
+import {convertCollectionsSnapshotToMap} from "../../firebase/firebase";
+import WithSpinner from "../../components/UI/withSpinner/withSpinner";
 
-const Shop = ({match}) => {
-    console.log(match);
+const CollectionsOverviewWithSpinner = WithSpinner(CollectionsOverview);
+const CollectionCategoryWithSpinner = WithSpinner(CollectionCategory);
 
-    return (
-        <main className="shop">
-            <Route exact path={`${match.path}`} component={CollectionsOverview}/>
-            <Route path={`${match.path}/:collectionId`} component={CollectionCategory}/>
-        </main>
-    );
-};
+class Shop extends Component {
+    state = {
+        isLoading: true
+    };
 
-export default Shop;
+    unsubscribeFromSnapshot = null;
+
+    componentDidMount() {
+        const {updateCollections} = this.props;
+
+        const collectionRef = firestore.collection('collections');
+
+        this.unsubscribeFromSnapshot = collectionRef.onSnapshot(async snapshot => {
+            const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
+            updateCollections(collectionsMap);
+            this.setState({isLoading: false});
+        })
+    }
+
+    render() {
+        const {match} = this.props;
+        const {isLoading} = this.state;
+
+        return (
+            <main className="shop">
+                <Route exact path={`${match.path}`} render={(props)=><CollectionsOverviewWithSpinner isLoading={isLoading} {...props}/>}/>
+                <Route path={`${match.path}/:collectionId`} render={(props)=><CollectionCategoryWithSpinner isLoading={isLoading} {...props}/>}/>
+            </main>
+        );
+    }
+}
+
+export default connect(null, {updateCollections})(Shop);

@@ -5,7 +5,7 @@ import {createStructuredSelector} from "reselect";
 
 import {selectCartItems} from "../../../store/selectors/cart";
 import {toggleCartHidden} from "../../../store/actions/cart";
-import CustomButton from "../../../UI/CustomButton/CustomButton";
+import CustomButton from "../../UI/CustomButton/CustomButton";
 import CartItem from "../CartItem/CartItem";
 import './CartDropdown.scss';
 
