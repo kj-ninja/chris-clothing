@@ -7,10 +7,10 @@ import CollectionsOverview from "../../components/Collection/CollectionsOverview
 import './Shop.scss';
 import CollectionCategory from "../../components/Collection/CollectionCategory/CollectionCategory";
 import {convertCollectionsSnapshotToMap} from "../../firebase/firebase";
-import WithSpinner from "../../components/UI/withSpinner/withSpinner";
+import withSpinner from "../../components/UI/withSpinner/withSpinner";
 
-const CollectionsOverviewWithSpinner = WithSpinner(CollectionsOverview);
-const CollectionCategoryWithSpinner = WithSpinner(CollectionCategory);
+const CollectionsOverviewWithSpinner = withSpinner(CollectionsOverview);
+const CollectionCategoryWithSpinner = withSpinner(CollectionCategory);
 
 class Shop extends Component {
     state = {
