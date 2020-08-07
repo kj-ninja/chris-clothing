@@ -1,47 +1,28 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {firestore} from "../../firebase/firebase";
 import {Route} from 'react-router-dom';
-import {updateCollections} from "../../store/actions/shop";
-import CollectionsOverview from "../../components/Collection/CollectionsOverview/CollectionsOverview";
-import './Shop.scss';
+import {fetchCollections} from "../../store/actions/shop";
+import CollectionsOverviewContainer from "../../components/Collection/CollectionsOverview/CollectionOverviewContainer";
 import CollectionCategory from "../../components/Collection/CollectionCategory/CollectionCategory";
-import {convertCollectionsSnapshotToMap} from "../../firebase/firebase";
-import withSpinner from "../../components/UI/withSpinner/withSpinner";
+import './Shop.scss';
 
-const CollectionsOverviewWithSpinner = withSpinner(CollectionsOverview);
-const CollectionCategoryWithSpinner = withSpinner(CollectionCategory);
 
 class Shop extends Component {
-    state = {
-        isLoading: true
-    };
-
-    unsubscribeFromSnapshot = null;
-
     componentDidMount() {
-        const {updateCollections} = this.props;
-
-        const collectionRef = firestore.collection('collections');
-
-        this.unsubscribeFromSnapshot = collectionRef.onSnapshot(async snapshot => {
-            const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
-            updateCollections(collectionsMap);
-            this.setState({isLoading: false});
-        })
+        const {fetchCollections} = this.props;
+        fetchCollections();
     }
 
     render() {
         const {match} = this.props;
-        const {isLoading} = this.state;
 
         return (
             <main className="shop">
-                <Route exact path={`${match.path}`} render={(props)=><CollectionsOverviewWithSpinner isLoading={isLoading} {...props}/>}/>
-                <Route path={`${match.path}/:collectionId`} render={(props)=><CollectionCategoryWithSpinner isLoading={isLoading} {...props}/>}/>
+                <Route exact path={`${match.path}`} component={CollectionsOverviewContainer}/>
+                <Route path={`${match.path}/:collectionId`} component={CollectionCategory}/>
             </main>
         );
     }
 }
 
-export default connect(null, {updateCollections})(Shop);
+export default connect(null, {fetchCollections})(Shop);

@@ -2,11 +2,18 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {selectCollection} from "../../../store/selectors/shop";
 
-import './CollectionCategory.scss';
 import CollectionItem from "../CollectionItem/CollectionItem";
-
+import {SpinnerContainer, SpinnerOverlay} from "../../UI/withSpinner/withSpinner.styles";
+import './CollectionCategory.scss';
 
 const CollectionCategory = ({collection}) => {
+    if (!collection) {
+        return (
+            <SpinnerOverlay>
+                <SpinnerContainer/>
+            </SpinnerOverlay>
+        );
+    }
     const {title, items} = collection;
 
     return (
