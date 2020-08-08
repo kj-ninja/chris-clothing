@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Route} from 'react-router-dom';
-import {fetchCollections} from "../../store/actions/shop";
+import {fetchCollectionsStart} from "../../store/actions/shop";
 import CollectionsOverviewContainer from "../../components/Collection/CollectionsOverview/CollectionOverviewContainer";
 import CollectionCategory from "../../components/Collection/CollectionCategory/CollectionCategory";
 import './Shop.scss';
@@ -9,8 +9,8 @@ import './Shop.scss';
 
 class Shop extends Component {
     componentDidMount() {
-        const {fetchCollections} = this.props;
-        fetchCollections();
+        const {fetchCollectionsStart} = this.props;
+        fetchCollectionsStart();
     }
 
     render() {
@@ -25,4 +25,4 @@ class Shop extends Component {
     }
 }
 
-export default connect(null, {fetchCollections})(Shop);
+export default connect(null, {fetchCollectionsStart})(Shop);
