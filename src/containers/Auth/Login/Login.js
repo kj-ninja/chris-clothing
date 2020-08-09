@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-import {auth, signInWithGoogle} from "../../../firebase/firebase";
+import {connect} from 'react-redux'
 import FormInput from "../FormInput/FormInput";
 import CustomButton from "../../../components/UI/CustomButton/CustomButton";
 import {LoginContainer, LoginTitle, ButtonsContainer, SignUpLink} from "./Login.styles";
+import {googleSignInStart, emailSignInStart} from "../../../store/actions/user";
 
 class Login extends Component {
     state = {
@@ -13,14 +14,9 @@ class Login extends Component {
     handleSubmit = async (e) => {
         e.preventDefault();
         const {email, password} = this.state;
+        const {emailSignInStart} = this.props;
 
-        try {
-            await auth.signInWithEmailAndPassword(email, password);
-            this.setState({email: '', password: ''});
-        }
-        catch(error) {
-            console.log(error);
-        }
+        emailSignInStart(email ,password);
     };
 
     handleChange = (e) => {
@@ -30,6 +26,7 @@ class Login extends Component {
     };
 
     render() {
+        const {googleSignInStart} = this.props;
         return (
             <LoginContainer>
                 <LoginTitle>I already have an account</LoginTitle>
@@ -57,7 +54,7 @@ class Login extends Component {
                         <CustomButton type="submit">
                             Sign in
                         </CustomButton>
-                        <CustomButton onClick={signInWithGoogle} type="button" google>
+                        <CustomButton type="button" onClick={googleSignInStart} google>
                             Sign in with Google
                         </CustomButton>
                     </ButtonsContainer>
@@ -68,4 +65,4 @@ class Login extends Component {
     }
 }
 
-export default Login;
+export default connect(null, {googleSignInStart, emailSignInStart})(Login);
