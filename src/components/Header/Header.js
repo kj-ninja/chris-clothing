@@ -4,7 +4,6 @@ import {createStructuredSelector} from "reselect";
 import {selectCartHidden} from "../../store/selectors/cart";
 import {signOutStart} from "../../store/actions/user";
 import {selectCurrentUser} from "../../store/selectors/user";
-import {auth} from '../../firebase/firebase';
 import {ReactComponent as Logo} from '../../assets/logo.svg';
 import CartIcon from "../Cart/CartIcon/CartIcon";
 import CartDropdown from "../Cart/CartDropdown/CartDropdown";
