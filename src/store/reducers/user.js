@@ -15,6 +15,7 @@ const user = (state = initialState, action) => {
             }
         case actionTypes.SIGN_IN_FAIL:
         case actionTypes.SIGN_OUT_FAIL:
+        case actionTypes.SIGN_UP_FAIL:
             return {
                 ...state,
                 error: action.payload

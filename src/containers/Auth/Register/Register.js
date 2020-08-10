@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {auth, createUserProfileDocument} from "../../../firebase/firebase";
+import {connect} from 'react-redux';
+import {signUpStart} from "../../../store/actions/user";
 import './Register.scss';
 import FormInput from "../FormInput/FormInput";
 import CustomButton from "../../../components/UI/CustomButton/CustomButton";
@@ -15,26 +16,14 @@ class Register extends Component {
     handleSubmit = async (e) => {
         e.preventDefault();
         const {displayName, email, password, confirmPassword} = this.state;
+        const {signUpStart} = this.props;
 
         if (password !== confirmPassword) {
             alert('Passwords dont match!');
             return;
         }
 
-        try {
-            const {user} = await auth.createUserWithEmailAndPassword(email, password);
-            await createUserProfileDocument(user, {displayName});
-
-            this.setState({
-                displayName: '',
-                email: '',
-                password: '',
-                confirmPassword: ''
-            });
-        }
-        catch(error) {
-            console.log(error);
-        }
+        signUpStart({displayName, email, password});
     };
 
     handleChange = (e) => {
@@ -92,4 +81,4 @@ class Register extends Component {
     }
 }
 
-export default Register;
+export default connect(null, {signUpStart})(Register);

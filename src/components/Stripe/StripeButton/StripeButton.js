@@ -1,12 +1,15 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {clearCart} from "../../../store/actions/cart";
 import StripeCheckout from "react-stripe-checkout";
 
-const StripeButton = ({price}) => {
+const StripeButton = ({price, clearCart}) => {
     const priceForStripe = price * 100;
     const publishableKey = 'pk_test_51HCiAaHJcvRe5XRZmO2Rfd8E2fGzPVkKVOd15nW0dIHRJVwPb58AaTDrGXltsyQNqoL5PdwPiJzS8GXg6rbcXfKf00m8pmFVkA';
 
     const onToken = token => {
         console.log(token);
+        clearCart();
         alert('Payment Successful');
     };
 
@@ -26,4 +29,4 @@ const StripeButton = ({price}) => {
     );
 };
 
-export default StripeButton;
+export default connect(null, {clearCart})(StripeButton);
