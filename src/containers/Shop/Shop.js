@@ -1,23 +1,27 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, lazy, Suspense} from 'react';
 import {connect} from 'react-redux';
 import {Route} from 'react-router-dom';
 import {fetchCollectionsStart} from "../../store/actions/shop";
-import CollectionsOverviewContainer from "../../components/Collection/CollectionsOverview/CollectionOverviewContainer";
-import CollectionCategory from "../../components/Collection/CollectionCategory/CollectionCategory";
 import './Shop.scss';
+import Spinner from "../../components/UI/Spinner/Spinner";
+
+const CollectionsOverviewContainer = lazy(()=> import('../../components/Collection/CollectionsOverview/CollectionOverviewContainer'))
+const CollectionCategory = lazy(()=> import('../../components/Collection/CollectionCategory/CollectionCategory'));
 
 const Shop = ({fetchCollectionsStart, match}) => {
+    console.log('Shop');
     useEffect(() => {
         fetchCollectionsStart();
     }, [fetchCollectionsStart]);
 
     return (
         <main className="shop">
-            <Route exact path={`${match.path}`} component={CollectionsOverviewContainer}/>
-            <Route path={`${match.path}/:collectionId`} component={CollectionCategory}/>
+            <Suspense fallback={<Spinner/>}>
+                <Route exact path={`${match.path}`} component={CollectionsOverviewContainer}/>
+                <Route path={`${match.path}/:collectionId`} component={CollectionCategory}/>
+            </Suspense>
         </main>
     );
-
-}
+};
 
 export default connect(null, {fetchCollectionsStart})(Shop);

@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {selectCollection} from "../../../store/selectors/shop";
 
 import CollectionItem from "../CollectionItem/CollectionItem";
-import {SpinnerContainer, SpinnerOverlay} from "../../UI/withSpinner/withSpinner.styles";
+import {SpinnerContainer, SpinnerOverlay} from "../../UI/Spinner/Spinner.styles";
 import './CollectionCategory.scss';
 
 const CollectionCategory = ({collection}) => {
