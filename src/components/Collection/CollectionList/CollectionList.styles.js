@@ -4,6 +4,7 @@ export const CollectionListContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 30px;
+  
   @media screen and (max-width: 800px) {
     align-items: center;
   }
@@ -21,6 +22,11 @@ export const CollectionTitle = styled.h1`
 export const CollectionPreview = styled.div`
   display: flex;
   justify-content: space-between;
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 5px;
+  
   @media screen and (max-width: 800px) {
     width: 100%;
     display: flex;

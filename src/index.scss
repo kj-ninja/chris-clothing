@@ -10,10 +10,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: 'Open Sans Condensed', sans-serif;
-  padding: 10px;
-  @media screen and (min-width: 800px) {
-    padding: 20px;
-  }
 }
 
 code {

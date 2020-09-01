@@ -1,7 +1,7 @@
 import React from 'react';
 import Fade from "react-reveal/Fade";
-import './OnLoad.scss';
 import {ReactComponent as Logo} from '../../../assets/logo.svg';
+import './OnLoad.scss';
 
 const OnLoad = () => {
     return (
