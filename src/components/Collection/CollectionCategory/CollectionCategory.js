@@ -4,7 +4,7 @@ import {selectCollection} from "../../../store/selectors/shop";
 
 import CollectionItem from "../CollectionItem/CollectionItem";
 import {SpinnerContainer, SpinnerOverlay} from "../../UI/Spinner/Spinner.styles";
-import './CollectionCategory.scss';
+import {CollectionPageContainer, CollectionTitle, CollectionItems} from './CollectionCategory.styles';
 
 const CollectionCategory = ({collection}) => {
     if (!collection) {
@@ -17,14 +17,14 @@ const CollectionCategory = ({collection}) => {
     const {title, items} = collection;
 
     return (
-        <div className="collection">
-            <h2 className="title">{title}</h2>
-            <div className="items">
+        <CollectionPageContainer>
+            <CollectionTitle>{title}</CollectionTitle>
+            <CollectionItems>
                 {items.map(item=> (
                     <CollectionItem key={item.id} item={item}/>
                 ))}
-            </div>
-        </div>
+            </CollectionItems>
+        </CollectionPageContainer>
     );
 };
 

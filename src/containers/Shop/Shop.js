@@ -9,7 +9,6 @@ const CollectionsOverviewContainer = lazy(()=> import('../../components/Collecti
 const CollectionCategory = lazy(()=> import('../../components/Collection/CollectionCategory/CollectionCategory'));
 
 const Shop = ({fetchCollectionsStart, match}) => {
-    console.log('Shop');
     useEffect(() => {
         fetchCollectionsStart();
     }, [fetchCollectionsStart]);

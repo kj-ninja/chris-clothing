@@ -8,6 +8,7 @@ import Header from "./components/Header/Header";
 import Spinner from "./components/UI/Spinner/Spinner";
 import ErrorBoundary from "./components/UI/ErrorBoundary/ErrorBoundary";
 import OnLoad from "./components/UI/OnLoad/OnLoad";
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 
 const Home = lazy(() => import('./components/Home/Home'));
 const Shop = lazy(() => import('./containers/Shop/Shop'));
@@ -27,6 +28,7 @@ const App = ({checkUserSession, currentUser}) => {
             <Switch>
                 <ErrorBoundary>
                     <Suspense fallback={<Spinner/>}>
+                        <ScrollToTop/>
                         <Route exact path="/" component={Home}/>
                         <Route exact path="/login" render={() => currentUser ? <Redirect to="/"/> : <Login/>}/>
                         <Route exact path="/register" render={() => currentUser ? <Redirect to="/"/> : <Register/>}/>
