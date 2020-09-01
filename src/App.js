@@ -7,6 +7,7 @@ import {checkUserSession} from "./store/actions/user";
 import Header from "./components/Header/Header";
 import Spinner from "./components/UI/Spinner/Spinner";
 import ErrorBoundary from "./components/UI/ErrorBoundary/ErrorBoundary";
+import OnLoad from "./components/UI/OnLoad/OnLoad";
 
 const Home = lazy(() => import('./components/Home/Home'));
 const Shop = lazy(() => import('./containers/Shop/Shop'));
@@ -21,6 +22,7 @@ const App = ({checkUserSession, currentUser}) => {
 
     return (
         <>
+            <OnLoad/>
             <Header/>
             <Switch>
                 <ErrorBoundary>
