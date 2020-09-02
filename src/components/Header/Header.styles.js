@@ -54,6 +54,10 @@ export const NavItem = styled(Link)`
     padding: 15px;
     cursor: pointer;
     
+    &:hover {
+        color: inherit;
+    }
+    
     @media screen and (min-width: 800px) {
         padding: 25px;
     }
