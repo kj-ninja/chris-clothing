@@ -9,6 +9,7 @@ import Spinner from "./components/UI/Spinner/Spinner";
 import ErrorBoundary from "./components/UI/ErrorBoundary/ErrorBoundary";
 import OnLoad from "./components/UI/OnLoad/OnLoad";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
+import FooterPage from "./components/Footer/Footer";
 
 const Home = lazy(() => import('./components/Home/Home'));
 const Shop = lazy(() => import('./containers/Shop/Shop'));
@@ -53,6 +54,7 @@ const App = ({checkUserSession, currentUser}) => {
                     </Suspense>
                 </ErrorBoundary>
             </Switch>
+            <FooterPage/>
         </>
     );
 }

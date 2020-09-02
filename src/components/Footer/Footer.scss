@@ -1,0 +1,89 @@
+footer {
+  background-color: rgb(17, 17, 17);
+
+  .footer-container {
+    width: 100%;
+    max-width: 1500px;
+    border-bottom: 1px solid rgb(48, 48, 48);
+  }
+
+  h5 {
+    font-size: 1.75rem;
+    font-weight: bold;
+    color: rgb(226, 226, 226);
+  }
+
+  ul {
+    padding: 0;
+
+    li {
+      font-size: 1rem;
+      padding: 10px 0;
+
+      a {
+        color: rgb(135, 135, 135) !important;
+        transition: all 0.15s ease 0s;
+        font-size: 18px;
+
+        &:hover {
+          color: #fff !important;
+        }
+      }
+    }
+  }
+
+  .footer-socials {
+    display: flex;
+    justify-content: flex-end;
+
+    a {
+      display: block;
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+      margin-right: 10px;
+      transition: all 0.2s ease 0s;
+
+      &:hover {
+        filter: brightness(200%);
+      }
+
+      &.twitter {
+        background: url(https://ecommerce-shopmax.netlify.app/static/media/twitter.796200d1.svg) center center no-repeat;
+      }
+
+      &.fb {
+        background: url(https://ecommerce-shopmax.netlify.app/static/media/facebook.fa7e2058.svg) center center no-repeat;
+      }
+
+      &.insta {
+        background: url(https://ecommerce-shopmax.netlify.app/static/media/instagram.4d660e6c.svg) center center no-repeat;
+      }
+    }
+  }
+
+  .footer-copyright {
+    font-size: 16px;
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+
+    .copyright-container {
+      display: flex;
+      justify-content: space-between;
+      max-width: 1500px;
+
+      .terms {
+
+        a {
+          margin: 0 0 0 10px;
+          color: rgb(135, 135, 135) !important;
+
+          &:hover {
+            color: #fff !important;
+          }
+        }
+      }
+    }
+  }
+}
