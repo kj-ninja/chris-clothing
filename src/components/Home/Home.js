@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Catalog from "../../containers/Catalog/Catalog";
 import './Home.scss';
 
+import {animateScroll as scroll} from "react-scroll";
 import Fade from 'react-reveal/Fade';
 import {HomePageContainer} from "./Home.styles";
 import CollectionItem from "../Collection/CollectionItem/CollectionItem";
@@ -59,6 +60,23 @@ const Home = () => {
             name: "Green Beanie"
         }
     ]);
+    const [showScroll, setShowScroll] = useState(false)
+
+    useEffect(()=> {
+        const checkScrollTop = () => {
+            if (!showScroll && window.pageYOffset > 600){
+                setShowScroll(true)
+            } else if (showScroll && window.pageYOffset <= 600){
+                setShowScroll(false)
+            }
+        };
+
+        window.addEventListener('scroll', checkScrollTop);
+
+        return () => {
+            window.removeEventListener('scroll', checkScrollTop);
+        }
+    });
 
     return (
         <HomePageContainer>
@@ -92,6 +110,9 @@ const Home = () => {
                         <CollectionItem key={item.id} item={item}/>
                     ))}
             </CollectionPreview>
+            <div className={`to-top ${showScroll ? 'visible' : ''}`} onClick={()=>scroll.scrollToTop()}>
+                <img src={require('../../assets/to-top.svg')} alt=""/>
+            </div>
         </HomePageContainer>
     );
 }
