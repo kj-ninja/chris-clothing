@@ -4,17 +4,27 @@ import {Link} from 'react-router-dom';
 export const HeaderContainer = styled.div`
     height: 60px;
     padding: 10px;
-    max-width: 1500px;
-    margin: 0 auto 20px;
-    display: flex;
-    justify-content: space-between;
+    position: relative;
+    margin-bottom: 25px;
     
     @media screen and (min-width: 800px) {
         height: 70px;
         margin: 0 auto 25px;
     }
-
 `
+
+export const MyHeader = styled.div`
+    height: 80px;
+    padding: 10px;
+    margin: 0 auto 20px;
+    display: flex;
+    justify-content: space-between;
+    
+    @media screen and (min-width: 800px) {
+        height: 80px;
+        margin: 0 auto 25px;
+    }
+`;
 
 export const LogoContainer = styled(Link)`
     height: 100%;

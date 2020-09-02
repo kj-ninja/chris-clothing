@@ -21,6 +21,22 @@ const App = ({checkUserSession, currentUser}) => {
         checkUserSession();
     }, [checkUserSession]);
 
+    useEffect(() => {
+        const header = document.getElementById('myHeader');
+        const sticky = header.offsetTop;
+        const scrollCallBack = window.addEventListener('scroll', () => {
+            if (window.pageYOffset > sticky + 50) {
+                header.classList.add('sticky');
+            } else {
+                header.classList.remove('sticky');
+            }
+        });
+
+        return () => {
+            window.removeEventListener('scroll', scrollCallBack);
+        };
+    }, []);
+
     return (
         <>
             <OnLoad/>

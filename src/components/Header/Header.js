@@ -7,25 +7,30 @@ import {selectCurrentUser} from "../../store/selectors/user";
 import {ReactComponent as Logo} from '../../assets/logo.svg';
 import CartIcon from "../Cart/CartIcon/CartIcon";
 import CartDropdown from "../Cart/CartDropdown/CartDropdown";
-import {HeaderContainer, LogoContainer, Nav, NavItem} from './Header.styles';
+import {HeaderContainer, LogoContainer, Nav, NavItem, MyHeader} from './Header.styles';
+import './Header.scss';
 
 const Header = ({currentUser, hidden, signOutStart}) => {
     return (
-        <HeaderContainer>
-            <LogoContainer to="/">
-                <Logo/>
-            </LogoContainer>
-            <Nav>
-                <NavItem to="/shop">SHOP</NavItem>
-                {/*<Link to="/contact" className="navigation-item">ORDERS</Link>*/}
-                {currentUser ?
-                    <NavItem as='div' onClick={signOutStart}>SIGN OUT</NavItem>
-                    :
-                    <NavItem to="/login">SIGN IN</NavItem>
-                }
-                <CartIcon/>
-            </Nav>
-            {hidden ? null : <CartDropdown/>}
+        <HeaderContainer className="main-container-pos-rel">
+            <MyHeader id="myHeader">
+                <div className="header">
+                    <LogoContainer to="/">
+                        <Logo/>
+                    </LogoContainer>
+                    <Nav>
+                        <NavItem to="/shop">SHOP</NavItem>
+                        {/*<Link to="/contact" className="navigation-item">ORDERS</Link>*/}
+                        {currentUser ?
+                            <NavItem as='div' onClick={signOutStart}>SIGN OUT</NavItem>
+                            :
+                            <NavItem to="/login">SIGN IN</NavItem>
+                        }
+                        <CartIcon/>
+                    </Nav>
+                    {hidden ? null : <CartDropdown/>}
+                </div>
+            </MyHeader>
         </HeaderContainer>
     );
 };

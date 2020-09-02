@@ -1,0 +1,27 @@
+.header {
+  width: 100%;
+  max-width: 1500px;
+  height: 60px;
+  padding: 10px;
+  margin: 0 auto 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.sticky {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  animation: popDown 0.5s;
+  background-color: #fff;
+  border-bottom: 1px solid #000;
+}
+
+@keyframes popDown {
+  0% {
+    transform: translateY(-100px);
+  }
+}
