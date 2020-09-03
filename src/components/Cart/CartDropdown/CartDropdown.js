@@ -9,7 +9,7 @@ import CustomButton from "../../UI/CustomButton/CustomButton";
 import CartItem from "../CartItem/CartItem";
 import './CartDropdown.scss';
 
-const CartDropdown = ({cartItems, history, dispatch}) => {
+const CartDropdown = ({cartItems, history, dispatch, hidden}) => {
     return (
         <div className="cart-dropdown">
             <div className="cart-items">
