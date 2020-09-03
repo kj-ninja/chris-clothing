@@ -5,6 +5,7 @@ import {selectCollectionsForPreview} from "../../../store/selectors/shop";
 import CollectionList from "../CollectionList/CollectionList";
 
 const CollectionsOverview = ({collections}) => {
+    console.log(collections);
     return (
         <section className="collections-overview">
             {collections.map(({id, ...otherCollectionProps}) => (
