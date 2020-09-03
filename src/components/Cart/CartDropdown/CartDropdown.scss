@@ -1,17 +1,64 @@
 .cart-dropdown {
-  position: absolute;
-  width: 240px;
-  height: 340px;
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  border: 1px solid black;
-  background-color: white;
-  top: 90px;
-  right: 40px;
-  z-index: 5;
+  position: fixed;
+  width: 320px;
+  max-width: 75%;
+  height: 100%;
+  right: 0;
+  top: 0;
+  z-index: 200;
+  background-color: #fff;
+  padding: 32px 0;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-out;
 
-  &.visible {
+  @media screen and (max-width: 800px) {
+    padding: 22px 0;
+  }
+
+  &.open {
+    transform: translateX(0);
+  }
+
+  .cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    border-bottom: 1px solid #000;
+    padding: 0 16px 22px 16px;
+
+  }
+
+  .cart-items {
+    height: calc(100vh - 236px);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+  }
+
+
+  .cart-footer {
+    height: 156px;
+    position: absolute;
+    padding-bottom: 32px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(129, 129, 129, 0.2) 0px 0px 10px 0px;
+    color: rgb(49, 51, 53);
+    border-top: 1px solid rgba(129, 129, 129, 0.2);
+
+    @media screen and (max-width: 800px) {
+      padding-bottom: 22px;
+    }
+
+    .cart-checkout {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px;
+    }
 
   }
 
@@ -20,15 +67,8 @@
     margin: 50px auto;
   }
 
-  .cart-items {
-    height: 240px;
-    display: flex;
-    flex-direction: column;
-    overflow: auto;
-  }
-
   button {
-    margin-top: auto;
+    margin: 0 auto;
   }
 }
 
@@ -42,32 +82,10 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.side-drawer {
-  position: fixed;
-  width: 280px;
-  max-width: 70%;
-  height: 100%;
-  left: 0;
-  top: 0;
-  z-index: 200;
-  background-color: #fff;
-  padding: 32px 16px;
-  transition: transform 0.3s ease-out;
-  .logo {
-    margin-bottom: 32px;
-  }
+.cart-cross {
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  background: url(https://ecommerce-shopmax.netlify.app/static/media/delete.e555c8a0.svg) center center / 60% no-repeat;
+  transition: transform 0.35s ease 0s;
 }
-
-//@include tablet() {
-//  .side-drawer {
-//    display: none;
-//  }
-//}
-//
-//.open {
-//  transform: translateX(0);
-//}
-//
-//.close {
-//  transform: translateX(-100%);
-//}
