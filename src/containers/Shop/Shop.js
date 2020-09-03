@@ -1,29 +1,26 @@
 import React, {useEffect, lazy, Suspense, useState} from 'react';
+import './Shop.scss';
+import '../../components/Home/Home.scss';
 import {connect} from 'react-redux';
 import {Route} from 'react-router-dom';
 import {fetchCollectionsStart} from "../../store/actions/shop";
-import './Shop.scss';
-import '../../components/Home/Home.scss';
 import Spinner from "../../components/UI/Spinner/Spinner";
-import {animateScroll as scroll} from "react-scroll";
+import ArrowToTop from "../../components/ArrowToTop/ArrowToTop";
 
-const CollectionsOverviewContainer = lazy(()=> import('../../components/Collection/CollectionsOverview/CollectionOverviewContainer'))
-const CollectionCategory = lazy(()=> import('../../components/Collection/CollectionCategory/CollectionCategory'));
+const CollectionsOverview = lazy(() => import('../../components/Collection/CollectionsOverview/CollectionsOverview'));
+const CollectionCategory = lazy(() => import('../../components/Collection/CollectionCategory/CollectionCategory'));
 
 const Shop = ({fetchCollectionsStart, match}) => {
-    const [showScroll, setShowScroll] = useState(false)
-
-    useEffect(()=> {
-        const checkScrollTop = () => {
-            if (!showScroll && window.pageYOffset > 600){
-                setShowScroll(true)
-            } else if (showScroll && window.pageYOffset <= 600){
-                setShowScroll(false)
-            }
-        };
-
+    const [showScroll, setShowScroll] = useState(false);
+    const checkScrollTop = () => {
+        if (!showScroll && window.pageYOffset > 700){
+            setShowScroll(true)
+        } else if (showScroll && window.pageYOffset <= 700){
+            setShowScroll(false)
+        }
+    };
+    useEffect(() => {
         window.addEventListener('scroll', checkScrollTop);
-
         return () => {
             window.removeEventListener('scroll', checkScrollTop);
         }
@@ -36,11 +33,9 @@ const Shop = ({fetchCollectionsStart, match}) => {
     return (
         <main className="shop">
             <Suspense fallback={<Spinner/>}>
-                <Route exact path={`${match.path}`} component={CollectionsOverviewContainer}/>
+                <Route exact path={`${match.path}`} component={CollectionsOverview}/>
                 <Route path={`${match.path}/:collectionId`} component={CollectionCategory}/>
-                <div className={`to-top ${showScroll ? 'visible' : ''}`} onClick={()=>scroll.scrollToTop()}>
-                    <img src={require('../../assets/to-top.svg')} alt=""/>
-                </div>
+                <ArrowToTop show={showScroll}/>
             </Suspense>
         </main>
     );

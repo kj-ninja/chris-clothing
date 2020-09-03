@@ -43,7 +43,7 @@
         border-image: initial;
 
         &:first-of-type {
-          border-radius: 5px 0px 0px 5px;
+          border-radius: 5px 0 0 5px;
           border-right: none;
           border-style: solid none solid solid;
           cursor: pointer;
@@ -57,7 +57,7 @@
         }
       }
 
-      div {
+      .quantity {
         display: inline-block;
         line-height: 35px;
         background-color: rgb(255, 255, 255);

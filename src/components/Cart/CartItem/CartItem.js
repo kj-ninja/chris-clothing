@@ -22,7 +22,7 @@ const CartItem = ({item, dispatch}) => {
                     <div onClick={()=>dispatch(addItem(item))} >
                         <i className="fas fa-plus"/>
                     </div>
-                    <div>{quantity}</div>
+                    <div className="quantity">{quantity}</div>
                     <div onClick={()=>dispatch(removeItem(item))} >
                         <i className="fas fa-minus"/>
                     </div>
