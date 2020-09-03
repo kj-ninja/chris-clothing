@@ -9,12 +9,12 @@ export const HeaderContainer = styled.div`
     
     @media screen and (min-width: 800px) {
         height: 70px;
-        margin: 0 auto 25px;
+        margin: 0 auto 9px;
     }
 `
 
 export const MyHeader = styled.div`
-    height: 80px;
+    height: 86px;
     padding: 10px;
     margin: 0 auto 20px;
     display: flex;

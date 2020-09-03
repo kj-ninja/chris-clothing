@@ -13,7 +13,7 @@ import './Header.scss';
 const Header = ({currentUser, hidden, signOutStart}) => {
     return (
         <>
-            <HeaderContainer className="main-container-pos-rel">
+            <HeaderContainer>
                 <MyHeader id="myHeader">
                     <div className="header">
                         <LogoContainer to="/">
