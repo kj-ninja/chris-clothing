@@ -12,26 +12,28 @@ import './Header.scss';
 
 const Header = ({currentUser, hidden, signOutStart}) => {
     return (
-        <HeaderContainer className="main-container-pos-rel">
-            <MyHeader id="myHeader">
-                <div className="header">
-                    <LogoContainer to="/">
-                        <Logo/>
-                    </LogoContainer>
-                    <Nav>
-                        <NavItem to="/shop">SHOP</NavItem>
-                        {/*<Link to="/contact" className="navigation-item">ORDERS</Link>*/}
-                        {currentUser ?
-                            <NavItem as='div' onClick={signOutStart}>SIGN OUT</NavItem>
-                            :
-                            <NavItem to="/login">SIGN IN</NavItem>
-                        }
-                        <CartIcon/>
-                    </Nav>
-                    <CartDropdown hidden={hidden}/>
-                </div>
-            </MyHeader>
-        </HeaderContainer>
+        <>
+            <HeaderContainer className="main-container-pos-rel">
+                <MyHeader id="myHeader">
+                    <div className="header">
+                        <LogoContainer to="/">
+                            <Logo/>
+                        </LogoContainer>
+                        <Nav>
+                            <NavItem to="/shop">SHOP</NavItem>
+                            {currentUser ?
+                                <NavItem as='div' onClick={signOutStart}>SIGN OUT</NavItem>
+                                :
+                                <NavItem to="/login">SIGN IN</NavItem>
+                            }
+                            <CartIcon/>
+                        </Nav>
+
+                    </div>
+                </MyHeader>
+            </HeaderContainer>
+            <CartDropdown hidden={hidden}/>
+        </>
     );
 };
 
