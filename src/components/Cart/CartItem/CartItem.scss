@@ -14,6 +14,7 @@
 
   .item-details {
     width: 70%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -27,6 +28,7 @@
     .buttons {
       display: flex;
       margin-top: 15px;
+      font-size: 18px;
 
       div {
         display: flex;
@@ -41,6 +43,12 @@
         border-width: 1px 1px 1px;
         border-color: rgb(221, 221, 221) rgb(221, 221, 221) rgb(221, 221, 221);
         border-image: initial;
+
+        @media screen and (max-width: 800px) {
+          font-size: 14px;
+          line-height: 14px;
+          height: 30px;
+        }
 
         &:first-of-type {
           border-radius: 5px 0 0 5px;
@@ -72,6 +80,11 @@
         border-style: solid;
         border-color: rgb(221, 221, 221);
         border-image: initial;
+
+        @media screen and (max-width: 800px) {
+          font-size: 14px;
+          line-height: 30px;
+        }
       }
     }
   }

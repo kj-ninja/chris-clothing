@@ -7,6 +7,12 @@ import Spinner from "../../UI/Spinner/Spinner";
 
 const CollectionsOverview = ({collections, isLoading}) => {
     console.log(collections);
+    // collections.forEach(collection => {
+    //     collection.items.forEach(item => {
+    //         console.log(item);
+    //     })
+    //     console.log(collection.items.length);
+    // })
     if (isLoading) {
         return <Spinner/>;
     }
