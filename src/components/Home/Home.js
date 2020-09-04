@@ -27,7 +27,7 @@ const Home = () => {
     });
 
     return (
-        <HomePageContainer>
+        <>
             <Catalog/>
             <div className="top-sells">
                 <h2>Top sells</h2>
@@ -59,7 +59,7 @@ const Home = () => {
                     ))}
             </CollectionPreview>
             <ArrowToTop show={showScroll}/>
-        </HomePageContainer>
+        </>
     );
 }
 

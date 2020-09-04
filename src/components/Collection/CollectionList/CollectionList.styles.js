@@ -23,7 +23,7 @@ export const CollectionPreview = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  max-width: 1500px;
+  max-width: 1352px;
   margin: 0 auto;
   padding: 0 5px;
   
