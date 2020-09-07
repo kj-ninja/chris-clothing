@@ -1,18 +1,6 @@
 import {createSelector} from 'reselect';
 import memoize from 'lodash.memoize';
 
-const filteredItems = (arr) => {
-    const result = [];
-
-    arr.forEach(arrItem => {
-        arrItem.items.forEach(item => {
-            result.push(item);
-        });
-    });
-
-    return result;
-};
-
 const selectShop = state => state.shop;
 
 export const selectCollections = createSelector(
@@ -37,6 +25,6 @@ export const selectIsCollectionLoading = createSelector(
 );
 
 export const selectItemsFromCollections = createSelector(
-    [selectCollectionsForPreview],
-    collections =>  filteredItems(collections)
+    [selectShop],
+    shop =>  shop.items
 );

@@ -2,6 +2,7 @@ import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
     collections: [],
+    items: [],
     loading: false,
     error: null
 }
@@ -18,6 +19,12 @@ const shop = (state = initialState, action) => {
                 ...state,
                 collections: action.payload,
                 loading: false
+            }
+        case actionTypes.INITIAL_ITEMS:
+        case actionTypes.SORT_ITEMS:
+            return {
+                ...state,
+                items: action.payload
             }
         case actionTypes.FETCH_COLLECTIONS_FAIL:
             return {
