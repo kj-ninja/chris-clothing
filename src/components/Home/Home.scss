@@ -1,6 +1,6 @@
-.sells {
+.top-sells, .new-collection {
   text-align: center;
-  margin: 50px 0 30px 0;
+  margin: 35px 0 30px 0;
 
   h2 {
     font-weight: normal;
@@ -80,58 +80,9 @@
     padding: 20px 50px;
     transition: 0.3s;
 
-    @media screen and (max-width: 800px) {
-
-    }
-
     &:hover {
       color: #fff;
       background-color: #000;
     }
-  }
-}
-
-.to-top {
-  position: fixed;
-  bottom: 32px;
-  right: 12px;
-  width: 50px;
-  height: 50px;
-  background-color: rgb(238, 238, 238);
-  z-index: 700;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 3px 0px;
-  cursor: pointer;
-  display: flex;
-  -webkit-box-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  align-items: center;
-  opacity: 0;
-  visibility: hidden;
-  padding: 10px;
-  border-radius: 4px;
-  transition: all 0.3s ease 0s;
-
-  @media screen and (max-width: 800px) {
-    bottom: 62px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
-  }
-
-  &.visible {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  &:hover {
-    transform: translateY(-10px);
-  }
-
-  img {
-    max-width: 100%;
-    display: block;
-    width: 18px;
-    height: 18px;
   }
 }

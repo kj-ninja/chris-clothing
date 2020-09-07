@@ -1,0 +1,85 @@
+.items-overview {
+  display: flex;
+  justify-content: space-between;
+
+  .items-filtering {
+    width: 28%;
+    display: flex;
+    flex-direction: column;
+
+    input {
+      width: 100%;
+      font-weight: 400;
+      background-size: 15px;
+      background-image: url(https://ecommerce-shopmax.netlify.app/static/media/search-black.074d6b75.svg);
+      transition: all 0.2s ease 0s;
+      background-repeat: no-repeat;
+      background-position: 15px 50%;
+      padding: 6px 20px 6px 40px;
+      border-radius: 5px;
+      border-width: 1px;
+      border-style: solid;
+      border-color: rgb(221, 221, 221);
+      border-image: initial;
+      margin-bottom: 30px;
+    }
+
+    .items-categories {
+      h4 {
+        margin-bottom: 20px;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+        font-size: 18px;
+
+        li {
+          margin-bottom: 8px;
+        }
+      }
+    }
+  }
+
+  .items-container {
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    .collection-item {
+      margin-bottom: 30px;
+
+      &:last-of-type {
+        margin-left: 33px;
+      }
+    }
+
+    &::after {
+      content: "";
+      flex: auto;
+    }
+
+    .order-by {
+      width: 100%;
+      text-align: right;
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 30px;
+
+      .select {
+        width: 250px;
+        text-align: left;
+
+        .css-yk16xz-control {
+          border-color: #000;
+          box-shadow: unset;
+        }
+      }
+    }
+
+    .collection-item {
+      width: 31%;
+    }
+  }
+}

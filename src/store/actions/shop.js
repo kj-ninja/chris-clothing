@@ -10,3 +10,13 @@ export const fetchCollectionsFail = (error) => ({
     type: actionTypes.FETCH_COLLECTIONS_FAIL,
     payload: error
 });
+
+export const initialItems = (items) => ({
+    type: actionTypes.INITIAL_ITEMS,
+    payload: items
+});
+
+export const sortItems = (items) => ({
+    type: actionTypes.SORT_ITEMS,
+    payload: items
+});

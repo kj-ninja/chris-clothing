@@ -23,3 +23,8 @@ export const selectIsCollectionLoading = createSelector(
     [selectShop],
     shop => shop.loading
 );
+
+export const selectItemsFromCollections = createSelector(
+    [selectShop],
+    shop =>  shop.items
+);

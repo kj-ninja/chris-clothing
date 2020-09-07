@@ -1,7 +1,19 @@
 import {takeLatest, call, put, all} from 'redux-saga/effects';
 import * as actionTypes from '../actions/actionTypes';
 import {convertCollectionsSnapshotToMap, firestore} from "../../firebase/firebase";
-import {fetchCollectionsFail, fetchCollectionsSuccess} from "../actions/shop";
+import {fetchCollectionsFail, fetchCollectionsSuccess, initialItems} from "../actions/shop";
+
+const filteredItems = (arr) => {
+    const result = [];
+
+    arr.forEach(arrItem => {
+        arrItem.items.forEach(item => {
+            result.push(item);
+        });
+    });
+
+    return result;
+};
 
 export function* fetchCollections() {
     try {
@@ -9,6 +21,9 @@ export function* fetchCollections() {
 
         const snapshot = yield collectionRef.get();
         const collectionsMap = yield call(convertCollectionsSnapshotToMap, snapshot);
+        const arrOfItems = Object.keys(collectionsMap).map(key=>collectionsMap[key]);
+
+        yield put(initialItems(filteredItems(arrOfItems)));
         yield put(fetchCollectionsSuccess(collectionsMap));
     }
     catch(error) {
