@@ -15,7 +15,7 @@ const CartDropdown = ({cartItems, history, dispatch, hidden, total}) => {
             {!hidden ? <div className="backdrop" onClick={()=>dispatch(toggleCartHidden())}/> : null}
             <aside className={`cart-dropdown ${hidden ? '' : 'open'}`}>
                 <div className="cart-header">
-                    <h3>Shopping Cart</h3>
+                    <h4>Shopping Cart</h4>
                     <div className="cart-cross" onClick={()=>dispatch(toggleCartHidden())}/>
                 </div>
                 <div className="cart-items">
@@ -27,8 +27,8 @@ const CartDropdown = ({cartItems, history, dispatch, hidden, total}) => {
                 </div>
                 <div className="cart-footer">
                     <div className="cart-checkout">
-                        <h3>Subtotal:</h3>
-                        <h3>${total}</h3>
+                        <h4>Subtotal:</h4>
+                        <h4>${total}</h4>
                     </div>
                     <CustomButton onClick={() => {
                         history.push('/checkout');

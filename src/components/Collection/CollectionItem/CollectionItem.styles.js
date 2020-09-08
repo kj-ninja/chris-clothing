@@ -8,6 +8,8 @@ export const CollectionItemContainer = styled.div`
   height: 350px;
   align-items: center;
   position: relative;
+  animation: fadeIn .5s ease-in;
+  
   &:hover {
     .image {
       opacity: 0.8;

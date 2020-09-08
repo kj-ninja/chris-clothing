@@ -12,7 +12,7 @@
   transition: transform 0.3s ease-out;
 
   @media screen and (max-width: 800px) {
-    padding: 22px 0;
+    padding: 27px 0;
   }
 
   &.open {
@@ -82,8 +82,8 @@
 }
 
 .cart-cross {
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
   cursor: pointer;
   background: url(https://ecommerce-shopmax.netlify.app/static/media/delete.e555c8a0.svg) center center / 60% no-repeat;
   transition: transform 0.35s ease 0s;

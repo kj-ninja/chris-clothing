@@ -12,22 +12,16 @@ import {sortItems} from "../../../store/actions/shop";
 import Spinner from "../../UI/Spinner/Spinner";
 import CollectionItem from "../CollectionItem/CollectionItem";
 import {Link} from "react-router-dom";
-
-// const sortByName = (sortMethod) => {
-//     if (sortMethod === 'ascending') {
-//         return filteredPokemons(transformedPokemons.sort((a, b) => {
-//             return a.name < b.name ? -1 : 1;
-//         }));
-//     } else {
-//         return filteredPokemons(transformedPokemons.sort((a, b) => {
-//             return a.name > b.name ? -1 : 1;
-//         }));
-//     }
-// };
+import {toggleCartHidden} from "../../../store/actions/cart";
+import CartItem from "../../Cart/CartItem/CartItem";
+import CustomButton from "../../UI/CustomButton/CustomButton";
 
 const CollectionsOverview = ({collections, isLoading, items, match, sortItems}) => {
     const [searchValue, setSearchValue] = useState('');
     const [sortValue, setSortValue] = useState('');
+    const [visible, setVisible] = useState(12);
+    const [filtersOn, setFiltersOn] = useState(false);
+
     const options = [
         {value: 'az', label: 'Alphabetically, A-Z'},
         {value: 'za', label: 'Alphabetically, Z-A'},
@@ -38,6 +32,11 @@ const CollectionsOverview = ({collections, isLoading, items, match, sortItems}) 
     if (isLoading) {
         return <Spinner/>;
     }
+
+    const loadMore = () => {
+        setVisible(prevState => prevState + 9)
+    }
+
 
     const handleInputChange = (selectedOption) => {
         if (selectedOption.value === 'az') {
@@ -64,68 +63,112 @@ const CollectionsOverview = ({collections, isLoading, items, match, sortItems}) 
         })
     };
 
+    //TODO: wydzielic dropdown i backdrop do osobnych komponentow!
+
     return (
-        <section className="items-overview">
-            <aside className="items-filtering">
-                <input type="search" value={searchValue}
-                       onChange={(e) => setSearchValue(e.target.value)}
-                       placeholder="Search by name..."
-                />
-                <div className="items-categories">
-                    <h4>Choose category</h4>
-                    <ul>
-                        <li>
-                            <Link to={`${match.path}/${collections[0].routeName}`}>Mens
-                                ({collections[0].items.length})</Link>
-                        </li>
-                        <li>
-                            <Link to={`${match.path}/${collections[1].routeName}`}>Womens
-                                ({collections[1].items.length})</Link>
-                        </li>
-                        <li>
-                            <Link to={`${match.path}/${collections[2].routeName}`}>Hats
-                                ({collections[2].items.length})</Link>
-                        </li>
-                        <li>
-                            <Link to={`${match.path}/${collections[3].routeName}`}>Jackets
-                                ({collections[3].items.length})</Link>
-                        </li>
-                        <li>
-                            <Link to={`${match.path}/${collections[4].routeName}`}>Sneakers
-                                ({collections[4].items.length})</Link>
-                        </li>
-                    </ul>
+        <>
+            {filtersOn ? <div className="backdrop" onClick={() => setFiltersOn(false)}/> : null}
+            <aside className={`filters-dropdown ${!filtersOn ? '' : 'open'}`}>
+                <div className="filters-header">
+                    <h4>Filters</h4>
+                    <div className="cart-cross" onClick={() => setFiltersOn(false)}/>
                 </div>
-                {/*<div className="items-range-tracker">*/}
-                {/*    Input range tracker*/}
-                {/*</div>*/}
-                {/*<div className="items-buttons">*/}
-                {/*    <button>filter</button>*/}
-                {/*    <button>clear</button>*/}
-                {/*</div>*/}
+                <div className="filters-body">
+                    <input type="search" value={searchValue}
+                           onChange={(e) => setSearchValue(e.target.value)}
+                           placeholder="Search by name..."
+                    />
+                    <div className="items-categories">
+                        <h4>Choose category</h4>
+                        <ul>
+                            <li>
+                                <Link to={`${match.path}/${collections[0].routeName}`}>Mens
+                                    ({collections[0].items.length})</Link>
+                            </li>
+                            <li>
+                                <Link to={`${match.path}/${collections[1].routeName}`}>Womens
+                                    ({collections[1].items.length})</Link>
+                            </li>
+                            <li>
+                                <Link to={`${match.path}/${collections[2].routeName}`}>Hats
+                                    ({collections[2].items.length})</Link>
+                            </li>
+                            <li>
+                                <Link to={`${match.path}/${collections[3].routeName}`}>Jackets
+                                    ({collections[3].items.length})</Link>
+                            </li>
+                            <li>
+                                <Link to={`${match.path}/${collections[4].routeName}`}>Sneakers
+                                    ({collections[4].items.length})</Link>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
             </aside>
-            <div className="items-container">
-                <div className="order-by">
-                    <AsyncSelect
-                        defaultOptions={options}
-                        cacheOptions
-                        placeholder="Sort by..."
-                        className="select"
-                        onChange={handleInputChange}
-                        theme={(theme) => ({
-                            ...theme,
-                            borderRadius: 0,
-                            colors: {
-                                ...theme.colors,
-                                primary: "black"
-                            }
-                        })}/>
+            <section className="items-overview">
+                <aside className="items-filtering">
+                    <input type="search" value={searchValue}
+                           onChange={(e) => setSearchValue(e.target.value)}
+                           placeholder="Search by name..."
+                    />
+                    <div className="items-categories">
+                        <h4>Choose category</h4>
+                        <ul>
+                            <li>
+                                <Link to={`${match.path}/${collections[0].routeName}`}>Mens
+                                    ({collections[0].items.length})</Link>
+                            </li>
+                            <li>
+                                <Link to={`${match.path}/${collections[1].routeName}`}>Womens
+                                    ({collections[1].items.length})</Link>
+                            </li>
+                            <li>
+                                <Link to={`${match.path}/${collections[2].routeName}`}>Hats
+                                    ({collections[2].items.length})</Link>
+                            </li>
+                            <li>
+                                <Link to={`${match.path}/${collections[3].routeName}`}>Jackets
+                                    ({collections[3].items.length})</Link>
+                            </li>
+                            <li>
+                                <Link to={`${match.path}/${collections[4].routeName}`}>Sneakers
+                                    ({collections[4].items.length})</Link>
+                            </li>
+                        </ul>
+                    </div>
+                </aside>
+                <div className="items-container">
+                    <div className="order-by">
+                        <button className="filtering-button" onClick={() => setFiltersOn(true)}>
+                            Filters
+                        </button>
+                        <AsyncSelect
+                            defaultOptions={options}
+                            cacheOptions
+                            placeholder="Sort by..."
+                            className="select"
+                            onChange={handleInputChange}
+                            theme={(theme) => ({
+                                ...theme,
+                                borderRadius: 0,
+                                colors: {
+                                    ...theme.colors,
+                                    primary: "black"
+                                }
+                            })}/>
+                    </div>
+                    <div className="items-wrapper">
+                        {filteredItems(items).slice(0, visible).map(item => (
+                            <CollectionItem key={item.id} item={item} className="fade-in"/>
+                        ))}
+                    </div>
+                    {visible < items.length &&
+                    <button onClick={loadMore} type="button" className="load-more">Load more</button>
+                    }
                 </div>
-                {filteredItems(items).map(item => (
-                    <CollectionItem key={item.id} item={item}/>
-                ))}
-            </div>
-        </section>
+            </section>
+        </>
     );
 };
 
