@@ -1,4 +1,4 @@
-import React, {useEffect, lazy, Suspense} from 'react';
+import React, {useEffect, Suspense} from 'react';
 import {connect} from 'react-redux';
 import {Switch, Route, Redirect} from 'react-router-dom';
 import {createStructuredSelector} from "reselect";
@@ -10,12 +10,17 @@ import ErrorBoundary from "./components/UI/ErrorBoundary/ErrorBoundary";
 import OnLoad from "./components/UI/OnLoad/OnLoad";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import FooterPage from "./components/Footer/Footer";
+import Home from './components/Home/Home';
+import Shop from "./containers/Shop/Shop";
+import Checkout from "./components/Checkout/Checkout";
+import Login from "./containers/Auth/Login/Login";
+import Register from "./containers/Auth/Register/Register";
 
-const Home = lazy(() => import('./components/Home/Home'));
-const Shop = lazy(() => import('./containers/Shop/Shop'));
-const Checkout = lazy(() => import('./components/Checkout/Checkout'));
-const Login = lazy(() => import('./containers/Auth/Login/Login'));
-const Register = lazy(() => import('./containers/Auth/Register/Register'))
+// const Home = lazy(() => import('./components/Home/Home'));
+// const Shop = lazy(() => import('./containers/Shop/Shop'));
+// const Checkout = lazy(() => import('./components/Checkout/Checkout'));
+// const Login = lazy(() => import('./containers/Auth/Login/Login'));
+// const Register = lazy(() => import('./containers/Auth/Register/Register'))
 
 const App = ({checkUserSession, currentUser}) => {
     useEffect(() => {
